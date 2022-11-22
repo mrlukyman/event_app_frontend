@@ -31,5 +31,15 @@ export const Container = styled.div`
   background: grey;
   position: relative;
 `
+export const SmallText = styled.p`
+  font-size: 0.7rem;
+  margin: 0.5rem;
+  color: white;
+`
+export const TitleHeading = styled.h2`
+  font-size: 1.15rem;
+  margin-left: 0.5rem;
+  color: white;
+`
 
 export default GlobalStyle
