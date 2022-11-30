@@ -15,6 +15,11 @@ const GlobalStyle = createGlobalStyle`
   align-items: center;
 }
 
+img, picture, svg, video {
+  display: block;
+  max-width: 100%;
+}
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
