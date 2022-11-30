@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import {  SmallText, TitleHeading } from '../Styles/GlobalStyles'
+import { SmallText, TitleHeading } from '../Styles/GlobalStyles'
 type Props = {
   title: String
   description: String
@@ -13,8 +13,7 @@ const Box = styled.div`
   position: relative;
   display: flex;
   flex-direction: column;
-  width: 15.5rem;
-  height: 11rem;
+  max-width: 17.5rem;
   border-radius: 0.3rem;
   color: #fff;
 `
