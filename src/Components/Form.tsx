@@ -1,21 +1,46 @@
 import React from "react";
 import { useForm } from "react-hook-form";
 import styled from "styled-components";
+import { Link } from "react-router-dom";
+import { useMutation, gql } from '@apollo/client';
+
+const NEW_EVENT = gql`
+  mutation createEvent($name: String!, $description: String!, $thumbnail: String!, $date: String!) {
+    createEvent(eventInput: {name: $name, description: $description, thumbnail: $thumbnail, date: $date}) {
+      _id
+      name
+      description
+      thumbnail
+      date
+    }
+  }
+`
 
 export const Form = () => {
+  const [createEvent, newEvent] = useMutation(NEW_EVENT)
+
+  const onSubmit = (data: any) => {
+    createEvent({ variables: { name: data.name, description: data.description, thumbnail: data.thumbnail, date: data.date } })
+  }
+
+  const submit = (e: any) => {
+    e.preventDefault()
+    onSubmit(e.target)
+  }
+
   const {
     register,
-    handleSubmit,
+    //handleSubmit,
     formState: { errors },
   } = useForm()
 
-  const sendData = (data: any) => {
-    console.log(data)
-  }
+  // const sendData = (data: any) => {
+  //   console.log(data)
+  // }
   return (
     <>
       <p>pica</p>
-      <form onSubmit={handleSubmit(sendData)}>
+      <form onSubmit={submit}>
         <label>Title</label>
         <input {...register('title', { required: true })} />
         {errors.title?.type === 'required' && (
@@ -39,8 +64,12 @@ export const Form = () => {
         <label>Image</label>
         <input type="file"{...register('image')} />
 
-        <input type="submit" />
+        <input type="submit" name="submit" />
+
       </form>
+      <Link to="/">
+        <button>XXX</button>
+      </Link>
     </>
   )
 }
