@@ -1,10 +1,10 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
 import { Container, TitleHeading } from '../Styles/GlobalStyles'
 import { colors } from '../Styles/colors'
 
-const Button = styled(Link)`
+const CreateEventButton = styled(Link)`
   display: flex;
   text-decoration: none;
   justify-content: center;
@@ -13,15 +13,31 @@ const Button = styled(Link)`
   font-weight: 600;
   color: ${colors.text};
   background-color: ${colors.primary};
-  border-radius: 0.35rem;
+  border-radius: 0 0 0.35rem 0;
   transition: all 0.2s ease-in-out;
   cursor: pointer;
-  height: 2rem;
+  height: 3rem;
   padding: 0 0.8rem;
-  &:hover {
-    background-color: ${colors.secondary};
-    height: 2.5rem;
-  }
+`
+const DeleteEventButton = styled.button`
+  display: flex;
+  text-decoration: none;
+  justify-content: center;
+  align-items: center;
+  font-size: 1rem;
+  font-weight: 600;
+  color: ${colors.text};
+  background-color: ${colors.error};
+  transition: all 0.2s ease-in-out;
+  cursor: pointer;
+  height: 3rem;
+  padding: 0 0.8rem;
+  box-shadow: none;
+  border: none;
+`
+
+const ButtonWrapper = styled.div`
+  display: flex;
 `
 
 const Wrapper = styled.div`
@@ -36,12 +52,27 @@ const Wrapper = styled.div`
   box-shadow: 0 0 0.5rem 0.1rem #0000004d;
 `
 
+const Logo = styled(Link)`
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: ${colors.text};
+  text-decoration: none;
+`
+
+
 export const Header = () => {
+  const [isDeleting, setIsDeleting] = useState(false)
+  const handleDeleteEvent = () => {
+    setIsDeleting(true)
+  }
   return (
     <Container>
       <Wrapper>
-        <TitleHeading>Event app</TitleHeading>
-        <Button to="/create">Create Event</Button>
+        <Logo to="/">Event app</Logo>
+        <ButtonWrapper>
+          <DeleteEventButton onClick={handleDeleteEvent}>Delete Event</DeleteEventButton>
+          <CreateEventButton to="/form">Create Event</CreateEventButton>
+        </ButtonWrapper>
       </Wrapper>
     </Container>
   )

@@ -8,7 +8,7 @@ const Wrapper = styled.div`
   display: flex;
   flex-wrap: wrap;
   margin-top: 1rem;
-
+  justify-content: space-between;
 `
 
 const GET_EVENTS = gql`
