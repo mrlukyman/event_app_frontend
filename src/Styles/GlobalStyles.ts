@@ -1,5 +1,6 @@
 import { createGlobalStyle } from 'styled-components'
 import styled from 'styled-components'
+import { colors } from './colors'
 
 const GlobalStyle = createGlobalStyle`
   body {
@@ -9,10 +10,10 @@ const GlobalStyle = createGlobalStyle`
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background: black;
+  background: ${colors.background};
   display: flex;
+  flex-direction: column;
   justify-content: center;
-  align-items: center;
 }
 
 img, picture, svg, video {
@@ -28,23 +29,29 @@ code {
 
 export const Container = styled.div`
   display: flex;
+  flex: 1;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 100vh;
-  width: 50vw;
-  background: grey;
-  position: relative;
+  margin: 0 10rem;
 `
+
+export const Wrapper = styled.div`
+  display: flex;
+  flex-direction: row;
+  max-width: 1200px;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 auto;
+`
+
+
+
 export const SmallText = styled.p`
   font-size: 0.7rem;
-  margin: 0.5rem;
-  color: white;
+  color: ${colors.text};
 `
 export const TitleHeading = styled.h2`
   font-size: 1.15rem;
-  margin-left: 0.5rem;
-  color: white;
+  color: ${colors.text};
 `
 
 export default GlobalStyle
