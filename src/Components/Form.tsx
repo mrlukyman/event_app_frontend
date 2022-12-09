@@ -15,6 +15,8 @@ const NEW_EVENT = gql`
   }
 `
 
+//create apache kafka message when user create event
+
 export const Form = () => {
   const [formState, setFormState] = useState({
     name: "test",
@@ -74,12 +76,15 @@ export const Form = () => {
           <p role="alert">Price is required</p>
         )}
         <label>Date</label>
-        <input type="datetime-local"{...register('date', { required: true })} />
+        <input
+          type="datetime-local"
+          {...register('date', { required: true })}
+        />
         {errors.date?.type === 'required' && (
           <p role="alert">Date is required</p>
         )}
         <label>Image</label>
-        <input type="file"{...register('image')} />
+        <input type="file" {...register('image')} />
 
         <input type="submit" name="submit" />
 

@@ -11,6 +11,7 @@ const Wrapper = styled.div`
   justify-content: space-between;
 `
 
+
 const GET_EVENTS = gql`
   query {
     events {
@@ -44,17 +45,17 @@ export const EventPanel = () => {
     </>
   )
 }
-  // return (
-  //   <Container>
+// return (
+//   <Container>
 
-  //     <Card
-  //       title="title"
-  //       description="description"
-  //       price={10}
-  //       date="date"
-  //       image='https://grapefestival.sk/storage/images/800x600/news/1668155172e1ea855b5b3fee8377622726fe599bf3.jpg?v=1'
-  //     />
-  //     <Button to="/form">Create event</Button>
-  //   </Container>
-  // )
-  // }
+//     <Card
+//       title="title"
+//       description="description"
+//       price={10}
+//       date="date"
+//       image='https://grapefestival.sk/storage/images/800x600/news/1668155172e1ea855b5b3fee8377622726fe599bf3.jpg?v=1'
+//     />
+//     <Button to="/form">Create event</Button>
+//   </Container>
+// )
+// }
