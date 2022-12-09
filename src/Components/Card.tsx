@@ -47,6 +47,7 @@ const BoxEventInfo = styled.div`
   justify-content: space-between;
   width: 100%;
 `
+
 export const Card = (props: Props) => {
   return (
     <Box>
@@ -56,7 +57,7 @@ export const Card = (props: Props) => {
           <TitleHeading>{props.title}</TitleHeading>
           {/* <SmallText>{props.description}</SmallText> */}
           <BoxEventInfo>
-            <SmallText>{props.date}</SmallText>
+            <SmallText>{props.date.toString().substring(0, 10)}</SmallText> {/* TODO: find a better solution to fix the date  */}
             <SmallText>{props.price}</SmallText>
           </BoxEventInfo>
         </Wrapper>
