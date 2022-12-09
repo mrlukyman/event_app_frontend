@@ -34,17 +34,6 @@ export const Container = styled.div`
   margin: 0 10rem;
 `
 
-export const Wrapper = styled.div`
-  display: flex;
-  flex-direction: row;
-  max-width: 1200px;
-  justify-content: space-between;
-  align-items: center;
-  margin: 0 auto;
-`
-
-
-
 export const SmallText = styled.p`
   font-size: 0.7rem;
   color: ${colors.text};

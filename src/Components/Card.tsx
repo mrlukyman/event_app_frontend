@@ -16,6 +16,8 @@ const Box = styled.div`
   max-width: 17.5rem;
   border-radius: 0.3rem;
   color: #fff;
+  margin-right: 0.5rem;
+  margin-bottom: 0.5rem;
 `
 const BoxBottomPart = styled.div`
   position: absolute;
@@ -28,6 +30,10 @@ const BoxBottomPart = styled.div`
   border-radius: 0 0 0.3rem 0.3rem;
   z-index: 1;
 `
+const Wrapper = styled.div`
+  margin: 0 0.5rem;
+`
+
 const Image = styled.img`
   background: #f2f2f2;
   align-self: center;
@@ -46,12 +52,14 @@ export const Card = (props: Props) => {
     <Box>
       <Image src={props.image} alt=""></Image>
       <BoxBottomPart>
-        <TitleHeading>{props.title}</TitleHeading>
-        <SmallText>{props.description}</SmallText>
-        <BoxEventInfo>
-          <SmallText>{props.date}</SmallText>
-          <SmallText>{props.price}</SmallText>
-        </BoxEventInfo>
+        <Wrapper>
+          <TitleHeading>{props.title}</TitleHeading>
+          {/* <SmallText>{props.description}</SmallText> */}
+          <BoxEventInfo>
+            <SmallText>{props.date}</SmallText>
+            <SmallText>{props.price}</SmallText>
+          </BoxEventInfo>
+        </Wrapper>
       </BoxBottomPart>
     </Box>
   )
