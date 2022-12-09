@@ -13,24 +13,6 @@ const client = new ApolloClient({
   cache: new InMemoryCache(),
 });
 
-
-const kafka = require('kafka-node');
-const Producer = kafka.Producer;
-const clientK = new kafka.KafkaClient();
-const producer = new Producer(clientK);
- 
-const payloads = [
-    { topic: 'test', messages: 'New sale happened', partition: 0 },
-    { topic: 'test', messages: ['Refund', 'Sale'] }
-];
- 
-producer.send(payloads, function(error:any, data:any) {
-    if (error) {
-        console.error(error);
-    } else {
-        console.log(data);
-    }
-  })
 root.render(
   <React.StrictMode>
     <ApolloProvider client={client}>
