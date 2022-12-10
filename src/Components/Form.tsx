@@ -5,12 +5,13 @@ import { Link } from "react-router-dom";
 import { useMutation, gql } from '@apollo/client';
 
 const NEW_EVENT = gql`
-  mutation createEvent($name: String!, $description: String!, $thumbnail: String!, $date: String!) {
-    createEvent(name: $name, description: $description, thumbnail: $thumbnail, date: $date) {
-      name
+  mutation CreateEvent($title: String!, $thumbnailUrl: String, $description: String, $price: Float) {
+    createEvent(title: $title, thumbnailUrl: $thumbnailUrl, description: $description, price: $price) {
+      id
+      title
       description
-      thumbnail
-      date
+      thumbnailUrl
+      price
     }
   }
 `
@@ -19,19 +20,20 @@ const NEW_EVENT = gql`
 
 export const Form = () => {
   const [formState, setFormState] = useState({
-    name: "test",
-    description: "",
-    date: "",
-    price: "",
-    thumbnail: "https://fiverr-res.cloudinary.com/images/q_auto,f_auto/gigs3/127869365/original/e90db80b74da67858e11b1167e339a66c11b50d0/create-a-random-3d-fortnite-thumbnail.png",
+    title: "test",
+    description: "sadooaskdokasd",
+    price: "1.23",
+    date: "2022-12-09T23:25:00.912Z",
+    thumbnailUrl: "",
   })
 
   const [createEvent] = useMutation(NEW_EVENT, {
     variables: {
-      name: formState.name,
+      title: formState.title,
       description: formState.description,
-      date: formState.date,
-      thumbnail: formState.thumbnail,
+      id: 1,
+      // thumbnailUrl: formState.thumbnailUrl,
+      price: formState.price,
     }
   })
 
@@ -39,7 +41,7 @@ export const Form = () => {
 
   // const onSubmit = (data: any) => {
   //   createEvent()
-  //   console.log(data.name.value, data.description.value, data.date.value)
+  //   console.log(data.title.value, data.description.value, data.date.value)
   // }
 
   // const submit = (e: any) => {
@@ -61,8 +63,8 @@ export const Form = () => {
     <>
       {/* <form onSubmit={submit}>
         <label>Title</label>
-        <input {...register('name', { required: true })} />
-        {errors.name?.type === 'required' && (
+        <input {...register('title', { required: true })} />
+        {errors.title?.type === 'required' && (
           <p role="alert">Title is required</p>
         )}
         <label>Description</label>
@@ -86,7 +88,7 @@ export const Form = () => {
         <label>Image</label>
         <input type="file" {...register('image')} />
 
-        <input type="submit" name="submit" />
+        <input type="submit" title="submit" />
 
       </form> */}
       <form onSubmit={(e) => {
@@ -96,9 +98,9 @@ export const Form = () => {
         <label>Title</label>
         <input
           type="text"
-          name="name"
-          value={formState.name}
-          onChange={(e) => setFormState({ ...formState, name: e.target.value })}
+          name="title"
+          value={formState.title}
+          onChange={(e) => setFormState({ ...formState, title: e.target.value })}
 
         />
         <label>Description</label>
@@ -115,18 +117,18 @@ export const Form = () => {
           value={formState.price}
           onChange={(e) => setFormState({ ...formState, price: e.target.value })}
         />
-        <label>Thumbnail</label>
+        {/* <label>thumbnailUrl</label>
         <input
           type="file"
-          name="thumbnail"
-        />
-        <label>Date</label>
+          name="thumbnailUrl"
+        /> */}
+        {/* <label>Date</label>
         <input
           type="datetime-local"
           name="date"
           value={formState.date}
           onChange={(e) => setFormState({ ...formState, date: e.target.value })}
-        />
+        /> */}
         <input type="submit" name="submit" />
       </form>
       <Link to="/">

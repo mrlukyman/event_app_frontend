@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
-import { Container, TitleHeading } from '../Styles/GlobalStyles'
+import { Container } from '../Styles/GlobalStyles'
 import { colors } from '../Styles/colors'
 
 const CreateEventButton = styled(Link)`
@@ -13,11 +13,11 @@ const CreateEventButton = styled(Link)`
   font-weight: 600;
   color: ${colors.text};
   background-color: ${colors.primary};
-  border-radius: 0 0 0.35rem 0;
+  border-radius: 0 0 0.3rem 0;
   transition: all 0.2s ease-in-out;
   cursor: pointer;
   height: 3rem;
-  padding: 0 0.8rem;
+  width: 10rem;
 `
 const DeleteEventButton = styled.button`
   display: flex;
@@ -31,9 +31,8 @@ const DeleteEventButton = styled.button`
   transition: all 0.2s ease-in-out;
   cursor: pointer;
   height: 3rem;
-  padding: 0 0.8rem;
-  box-shadow: none;
   border: none;
+  width: 10rem;
 `
 
 const ButtonWrapper = styled.div`
@@ -46,7 +45,7 @@ const Wrapper = styled.div`
   height: 3rem;
   justify-content: space-between;
   align-items: center;
-  background-color: ${colors.secondary};
+  background-color: ${colors.background};
   margin-bottom: 1rem;
   border-radius: 0 0 0.3rem 0.3rem;
   box-shadow: 0 0 0.5rem 0.1rem #0000004d;
@@ -57,6 +56,12 @@ const Logo = styled(Link)`
   font-weight: 600;
   color: ${colors.text};
   text-decoration: none;
+  width: 10rem;
+  height: 3rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 0 0 0 0.3rem;
 `
 
 

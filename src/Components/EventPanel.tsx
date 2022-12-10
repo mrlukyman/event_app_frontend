@@ -15,10 +15,11 @@ const Wrapper = styled.div`
 const GET_EVENTS = gql`
   query {
     events {
-      name
+      title
       description
       thumbnailUrl
       date
+      price
     }
   }
 `
@@ -34,9 +35,9 @@ export const EventPanel = () => {
       <Wrapper>
         {data.events.map((event: any) => (
           <Card
-            title={event.name}
+            title={event.title}
             description={event.description}
-            price={10}
+            price={event.price}
             date={event.date}
             image={event.thumbnailUrl}
           />
