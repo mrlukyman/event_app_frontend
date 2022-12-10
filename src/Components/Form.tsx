@@ -5,12 +5,12 @@ import { Link } from "react-router-dom";
 import { useMutation, gql } from '@apollo/client';
 
 const NEW_EVENT = gql`
-  mutation CreateEvent($title: String!, $thumbnailUrl: String, $description: String, $price: Float) {
-    createEvent(title: $title, thumbnailUrl: $thumbnailUrl, description: $description, price: $price) {
-      id
+  mutation CreateEvent($title: String!, $description: String, $date: Date!, $thumbnailUrl: String, $price: Float) {
+    createEvent(title: $title, description: $description, date: $date, thumbnailUrl: $thumbnailUrl, price: $price) {
       title
       description
       thumbnailUrl
+      date
       price
     }
   }
@@ -20,19 +20,21 @@ const NEW_EVENT = gql`
 
 export const Form = () => {
   const [formState, setFormState] = useState({
-    title: "test",
-    description: "sadooaskdokasd",
-    price: "1.23",
-    date: "2022-12-09T23:25:00.912Z",
-    thumbnailUrl: "",
+    title: "Form test pls work",
+    description: "more",
+    date: "2022-12-10T20:16:51.946Z",
+    thumbnailUrl: "https://fiverr-res.cloudinary.com/images/q_auto,f_auto/gigs3/127869365/original/e90db80b74da67858e11b1167e339a66c11b50d0/create-a-random-3d-fortnite-thumbnail.png",
+    price: 1.22
   })
+
+  const date = "2022-12-10T20:16:51.946Z";
 
   const [createEvent] = useMutation(NEW_EVENT, {
     variables: {
       title: formState.title,
       description: formState.description,
-      id: 1,
-      // thumbnailUrl: formState.thumbnailUrl,
+      thumbnailUrl: formState.thumbnailUrl,
+      date: date,
       price: formState.price,
     }
   })
@@ -115,20 +117,22 @@ export const Form = () => {
           type="text"
           name="price"
           value={formState.price}
-          onChange={(e) => setFormState({ ...formState, price: e.target.value })}
+          onChange={(e) => setFormState({ ...formState, price: parseFloat(e.target.value) })}
         />
-        {/* <label>thumbnailUrl</label>
+        <label>thumbnailUrl</label>
         <input
-          type="file"
+          type="text"
           name="thumbnailUrl"
-        /> */}
-        {/* <label>Date</label>
+          value={formState.thumbnailUrl}
+          onChange={(e) => setFormState({ ...formState, thumbnailUrl: e.target.value })}
+        />
+        <label>Date</label>
         <input
-          type="datetime-local"
+          type="text"
           name="date"
-          value={formState.date}
+          value={date.toString()}
           onChange={(e) => setFormState({ ...formState, date: e.target.value })}
-        /> */}
+        />
         <input type="submit" name="submit" />
       </form>
       <Link to="/">
