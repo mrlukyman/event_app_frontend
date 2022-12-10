@@ -16,7 +16,7 @@ const Box = styled.div`
   max-width: 17.5rem;
   border-radius: 0.3rem;
   color: #fff;
-  margin-right: 2rem;
+  /* margin-right: 2rem; */
   margin-bottom: 2rem;
   box-shadow: 0 0 0.5rem 0.1rem #0000004d;
 `
