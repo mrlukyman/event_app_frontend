@@ -11,9 +11,6 @@ const GlobalStyle = createGlobalStyle`
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background: ${colors.background};
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
 }
 
 img, picture, svg, video {
