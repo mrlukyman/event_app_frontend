@@ -19,6 +19,11 @@ const Box = styled.div`
   /* margin-right: 2rem; */
   margin-bottom: 2rem;
   box-shadow: 0 0 0.5rem 0.1rem #0000004d;
+  transition: all 0.3s ease-in-out;
+  &:hover {
+    box-shadow: 0 0 0.5rem 0.1rem #ffffff4d;
+    filter: brightness(1.1);
+  }
 `
 const BoxBottomPart = styled.div`
   position: absolute;
